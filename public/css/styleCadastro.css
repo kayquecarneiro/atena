@@ -1,8 +1,9 @@
-
-/* BASIC */
-
 html {
   background-color: #ffffff;
+}
+
+#vtp div{
+  display: none;
 }
 
 body {
@@ -71,8 +72,20 @@ label {
   border-radius: 0 0 10px 10px;
 }
 
+.help {
+  text-align: left;
+  width: 85%;
+  font-size: 9px;
+  display:inline-block;
+  color: #363636;
+}
+
 h2.inactive {
   color: #cccccc;
+}
+
+hr {
+  width: 85%;
 }
 
 h4 {
