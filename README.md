@@ -14,10 +14,10 @@ Caso seja necessária a modificação de algum dos atributos apresentados anteri
 
 Após a configuração do ambiente basta abrir o terminal do Sistema operacional e navegar até a pasta do projeto é iniciar o servidor web através do comando
 
-“php artisan serve”
+- “php artisan serve”
 
 A aplicação vai responder através do endereço
 
-http://127.0.0.1:8000
+- http://127.0.0.1:8000
 
 Obs: para o pleno funcionamento é necessário que as variáveis de ambiente da linguagem PHP estejam devidamente configuradas no Sistema operacional que será usado para rodar os serviços da aplicação.
