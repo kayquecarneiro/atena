@@ -9,6 +9,102 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="<?php echo asset('js/ocultar.js')?>"></script>
   <link rel="stylesheet" href="<?php echo asset('css/styleCadastro.css')?>" type="text/css">
+  
+  <script type="text/javascript" >
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('endereco').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('estado').value=("");
+            
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('endereco').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('estado').value=(conteudo.uf);
+            
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('endereco').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('estado').value="...";
+                
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+  </script>
+  <script type="text/javascript">
+    function validar(){
+      var senha = formuser.senha.value;
+      var rep_senha = formuser.resenha.value;
+      
+      if(senha == "" || senha.length <= 5){
+        alert('Preencha o campo senha com minimo 6 caracteres');
+        formuser.senha.focus();
+        return false;
+      }
+      
+      if(rep_senha == "" || rep_senha.length <= 5){
+        alert('Preencha o campo senha com minimo 6 caracteres');
+        formuser.rep_senha.focus();
+        return false;
+      }
+      
+      if (senha != rep_senha) {
+        alert('Senhas diferentes');
+        formuser.senha.focus();
+        return false;
+      }
+    }
+  </script>
   <title>Bemol - Cadastro</title>
 
 </head>
@@ -23,7 +119,7 @@
         <img src="{{url('storage/img/blogo.svg')}}" id="icon" alt="User Icon" />
         </div>
 
-        <form class="form-horizontal" method="POST">
+        <form class="form-horizontal" name="formuser" method="POST">
           @csrf
           <h4><legend>Dados Pessoais</legend></h4>
           <hr/>
@@ -113,7 +209,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="cep">* CEP</label>
               <div class="col-md-4">
-                <input id="cep" name="cep" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('00000-000')">
+                <input id="cep" name="cep" type="text" class="form-control input-md" required="" onblur="pesquisacep(this.value);" onkeypress="$(this).mask('00000-000')">
                 <br><a span class="help" href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">Não sabe seu CEP ?</a></span><br/>
               </div>
             </div>
@@ -192,7 +288,7 @@
                 <input id="resenha" name="resenha" type="password" class="password form-control input-md" required="">
               </div>
             </div>
-            <input type="submit" value="Cadastrar">
+            <input type="submit" onclick="return validar()" value="Cadastrar">
         </form>
 
         <div id="formFooter">
