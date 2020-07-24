@@ -18,6 +18,8 @@
         <img src="{{url('storage/img/user.png')}}" id="icon" alt="User Icon" />
         </div>
         <div>
+            <h4><legend>Dados de acesso</legend></h4>
+            <hr/>
             <label> Nome              : <?php  echo "".$_COOKIE['namep']." ".$_COOKIE['lastName'] ?></label>
             <label> Data Nascimento   : <?php  echo "".$_COOKIE['birthDate'] ?></label>
             <label> Genero            : <?php  echo "".$_COOKIE['gender'] ?></label>
@@ -29,6 +31,18 @@
             <label> E-mail            : <?php  echo "".$_COOKIE['email'] ?></label>
             <label> Razao Social      : <?php  echo "".$_COOKIE['razaosocial'] ?></label>
             <label>  inscricao estadual: <?php  echo "".$_COOKIE['ie'] ?></label>
+            <h4><legend>Endereço</legend></h4>
+            <hr/>
+            <label>CEP : <?php  echo "".$_COOKIE['cep'] ?></label>
+            <label>Numero : <?php  echo "".$_COOKIE['numberAd'] ?></label>
+            <label>Bairro : <?php  echo "".$_COOKIE['neighborhood'] ?></label>
+            <label>Endereço : <?php  echo "".$_COOKIE['endereco'] ?></label>
+            <label>Cidade : <?php  echo "".$_COOKIE['city'] ?></label>
+            <label>Referência : <?php  echo "".$_COOKIE['reference'] ?></label>
+            <label>Endereço : <?php  echo "".$_COOKIE['birthDate'] ?></label>
+            <label>Complemento : <?php  echo "".$_COOKIE['complement'] ?></label>
+            <label>Estado : <?php  echo "".$_COOKIE['stateAnd'] ?></label>
+
         </div>    
         <h2> <a class="underlineHover" href="{{ url('/') }}" target="_self">Sair</a></h2>
         <div id="formFooter">

@@ -14,80 +14,104 @@ class LoginController extends Controller
 
         $listaUsuarios = DB::select('SELECT * from user');
 
-        foreach($listaUsuarios as $user){
-            if(strcmp($loginUser,$user->email) == 0){
-                if(strcmp($passwordUser,$user->passworduser) == 0){
+        if(count($listaUsuarios) != 0){
+
+            foreach($listaUsuarios as $user){
+                if(strcmp($loginUser,$user->email) == 0){
+                    if(strcmp($passwordUser,$user->passworduser) == 0){
 
 
-                    if(empty($user->lastName)){
-                        setcookie('lastName', "-");
-                    }else{
-                        setcookie('lastName', $user->lastName);
-                    }
+                        if(empty($user->lastName)){
+                            setcookie('lastName', "-");
+                        }else{
+                            setcookie('lastName', $user->lastName);
+                        }
 
-                    if(empty($user->birthDate)){
-                        setcookie('birthDate', "-");
-                    }else{
-                        setcookie('birthDate', $user->birthDate);
-                    }
+                        if(empty($user->birthDate)){
+                            setcookie('birthDate', "-");
+                        }else{
+                            setcookie('birthDate', $user->birthDate);
+                        }
 
-                    if(empty($user->CPF)){
-                        setcookie('CPF', "-");
-                    }else{
-                        setcookie('CPF', $user->CPF);
-                    }
+                        if(empty($user->CPF)){
+                            setcookie('CPF', "-");
+                        }else{
+                            setcookie('CPF', $user->CPF);
+                        }
 
-                    if(empty($user->RG)){
-                        setcookie('RG', "-");
-                    }else{
-                        setcookie('RG', $user->RG);
-                    }
+                        if(empty($user->RG)){
+                            setcookie('RG', "-");
+                        }else{
+                            setcookie('RG', $user->RG);
+                        }
 
-                    if(empty($user->CNPJ)){
-                        setcookie('CNPJ', "-");
-                    }else{
-                        setcookie('CNPJ', $user->CNPJ);
-                    }
+                        if(empty($user->CNPJ)){
+                            setcookie('CNPJ', "-");
+                        }else{
+                            setcookie('CNPJ', $user->CNPJ);
+                        }
 
-                    if(empty($user->razaosocial)){
-                        setcookie('razaosocial', "-");
-                    }else{
-                        setcookie('razaosocial', $user->razaosocial);
-                    }
+                        if(empty($user->razaosocial)){
+                            setcookie('razaosocial', "-");
+                        }else{
+                            setcookie('razaosocial', $user->razaosocial);
+                        }
 
-                    if(empty($user->ie)){
-                        setcookie('ie', "-");  
-                    }else{
-                        setcookie('ie', $user->ie);  
-                    }
+                        if(empty($user->ie)){
+                            setcookie('ie', "-");  
+                        }else{
+                            setcookie('ie', $user->ie);  
+                        }
 
 
-            
-                   if(strcmp($user->gender,"1") == 0){
+                
+                    if(strcmp($user->gender,"1") == 0){
+                        
+                            setcookie('gender', "Feminino");
+                        
+                        }else if(strcmp($user->gender,"2") == 0){
+                        
+                            setcookie('gender', "Masculino");
+                        
+                        }else{
+                        
+                            setcookie('gender', "Indefinido");
+
+                        }
+
+                    setcookie('userID', $user->userID);
+                    setcookie('namep', $user->namep);
+                    setcookie('cellPhone', $user->cellPhone);
+                    setcookie('landline', $user->landline);           
+                    setcookie('email', $user->email);
+
+                    setcookie('nameAddress', $user->nameAddress);
+                    setcookie('cep', $user->cep);
+                    setcookie('numberAd', $user->numberAd);
+                    setcookie('neighborhood', $user->neighborhood);
+                    setcookie('city', $user->city);
+                    setcookie('reference', $user->reference);
+                    setcookie('complement', $user->complement);
+                    setcookie('stateAnd', $user->stateAnd);
+                    setcookie('endereco',$user->endereco);
+
+
+                            
                     
-                        setcookie('gender', "Feminino");
-                    
-                    }else if(strcmp($user->gender,"2") == 0){
-                    
-                        setcookie('gender', "Masculino");
-                    
+                    return view('painelcliente');
+                    break;
                     }else{
-                    
-                        setcookie('gender', "Indefinido");
-
+                        echo "<script>alert('E-mail ou senha inválidos.');</script>";
+                        return view('home');
                     }
-
-                   setcookie('userID', $user->userID);
-                   setcookie('namep', $user->namep);
-                   setcookie('cellPhone', $user->cellPhone);
-                   setcookie('landline', $user->landline);           
-                   setcookie('email', $user->email);
-                         
-                   
-                   return view('painelcliente');
-                   break;
+                }else{
+                    echo "<script>alert('E-mail ou senha inválidos.');</script>";
+                    return view('home');
                 }
             }
+        }else{
+            echo "<script>alert('Base de dados sem registros.');</script>";
+            return view('home');
         }
 
     }

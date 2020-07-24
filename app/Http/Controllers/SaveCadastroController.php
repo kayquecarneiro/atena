@@ -30,6 +30,7 @@ class SaveCadastroController extends Controller
         $celular = $request->input('celular','N');
         $telfixo = $request->input('telfixo','N');
         $cep = $request->input('cep',"N/A");
+        $destinatario = $request->input('destinatario',"N/A");
         $endereco = $request->input('endereco','N');
         $numero = $request->input('numero','N');
         $complemento = $request->input('complemento','N');
@@ -40,9 +41,11 @@ class SaveCadastroController extends Controller
         $email = $request->input('email','N');
         $senha = md5($request->input('senha','N'));
         $ie = $request->input('ie','N');
+        $endereco = $request->input('endereco','N');
 
-        DB::insert('INSERT INTO user (namep, lastName, birthDate, gender, cellPhone, landline, CPF, RG, CNPJ, email, passworduser, checked, razaosocial, ie) 
-                  VALUES ("'.$nome.'", "'.$sobreNome.'", "'.$datanascimento.'", '.$selectSexo.', "'.$celular.'", "'.$telfixo.'", "'.$cpf.'", "'.$rg.'", "'.$cnpj_numero.'", "'.$email.'", "'.$senha.'",'.$checked.', "'.$razaosocial.'", "'.$ie.'")');
+        DB::insert('INSERT INTO user (namep, lastName, birthDate, gender, cellPhone, landline, CPF, RG, CNPJ, email, passworduser, checked, razaosocial, ie, nameAddress, cep, numberAd, neighborhood, city, reference, complement, stateAnd, endereco) 
+                  VALUES ("'.$nome.'", "'.$sobreNome.'", "'.$datanascimento.'", '.$selectSexo.', "'.$celular.'", "'.$telfixo.'", "'.$cpf.'", "'.$rg.'", "'.$cnpj_numero.'", "'.$email.'", "'.$senha.'",'.$checked.', "'.$razaosocial.'", "'.$ie.'",
+                  "'.$destinatario.'","'.$cep.'","'.$numero.'","'.$bairro.'","'.$cidade.'","'.$referencia.'","'.$complemento.'","'.$estado.'","'.$endereco.'")',);
 
         return view('success');
     }
