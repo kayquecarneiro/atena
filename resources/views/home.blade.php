@@ -15,13 +15,13 @@
     <div id="formContent">
     
         <h2 class="active">Entrar</h2>
-        <h2> <a class="underlineHover" href="http://127.0.0.1:8000/cadastro" target="_self">Criar Cadastro</a></h2>
+        <h2> <a class="underlineHover" href="{{ url('/cadastro') }}" target="_self">Criar Cadastro</a></h2>
         
         <div class="fadeIn first">
         <img src="{{url('storage/img/blogo.svg')}}" id="icon" alt="User Icon" />
         </div>
-        <form method="POST">
-            <input type="email" id="login" class="fadeIn second" name="login" placeholder="Digite seu email">
+        <form>
+            <input type="email" id="login" class="fadeIn second" name="login" placeholder="Digite seu e-mail">
             <input type="password" id="password" class="fadeIn third" name="login" placeholder="Informe sua senha">
             <input type="submit" class="fadeIn fourth" value="Entrar">
         </form>

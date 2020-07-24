@@ -16,22 +16,23 @@
 <div class="wrapper">
     <div id="formContent">
     
-        <h2> <a class="underlineHover active" href="http://127.0.0.1:8000/" target="_self">Entrar</a></h2>
+        <h2> <a class="underlineHover active" href="{{ url('/') }}" target="_self">Entrar</a></h2>
         <h2 class="active">Criar Cadastro</h2>
 
         <div class="fadeIn first">
         <img src="{{url('storage/img/blogo.svg')}}" id="icon" alt="User Icon" />
         </div>
 
-        <form class="form-horizontal">
+        <form class="form-horizontal" method="POST">
+          @csrf
           <h4><legend>Dados Pessoais</legend></h4>
           <hr/>
 
             <div class="form-group">
               <select id='select' name='select' class="tipopessoa">
-                <option value=''>Selecione</option>
-                <option value='cpf'>Pessoa Física</option>
-                <option value='cnpj'>Pessoa Jurídica</option>
+                <option value='0'>Selecione</option>
+                <option value='1'>Pessoa Física</option>
+                <option value='2'>Pessoa Jurídica</option>
               </select>
             </div>
 
@@ -43,15 +44,15 @@
             </div>
 
             <div  id='vtp'>
-              <div id='cpf'>
+              <div id='1'>
                      
-                <label class="col-md-4 control-label" id='sobreNome' for="sobreNome">* Sobrenome</label>
-                <input id="sobreNome" name="sobreNome" type="text" class="form-control input-md" required="">
+                <label class="col-md-4 control-label" id='sobrenome' for="sobrenome">* Sobrenome</label>
+                <input id="sobrenome" name="sobrenome" type="text" class="form-control input-md">
 
                 <label class="col-md-4 control-label" for="dataNascimento">* Data de Nascimento</label>
-                <input id="dataNascimento" name="dataNascimento" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('00/00/0000')">
+                <input id="dataNascimento" name="dataNascimento" type="text" class="form-control input-md" onkeypress="$(this).mask('00/00/0000')">
                 
-                <label class="col-md-4 control-label" for="tipoPessoa">Sexo</label>
+                <label class="col-md-4 control-label" for="selectSexo">Sexo</label>
                 <select id='selectSexo' name='selectSexo' class="tipopessoa">
                     <option value='1'>Feminino</option>
                     <option value='2'>Masculino</option>
@@ -59,26 +60,26 @@
                 </select>
 
                 <label class="col-md-4 control-label" for="cpf_numero">* CPF</label>
-                <input id="cpf_numero" name="cpf_numero" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('000.000.000-00')">
+                <input id="cpf_numero" name="cpf_numero" type="text" class="form-control input-md"  onkeypress="$(this).mask('000.000.000-00')">
                 
 
                 <label class="col-md-4 control-label" for="rg">RG</label>
-                <input id="rg" name="rg" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('0000000-0')">
+                <input id="rg" name="rg" type="text" class="form-control input-md" onkeypress="$(this).mask('0000000-0')">
 
               </div>
 
             
-              <div id='cnpj'>
+              <div id='2'>
 
                 <label class="col-md-4 control-label" for="razaosocial">* Razão Social</label>
-                <input id="razaosocial" name="razaosocial" type="text" class="form-control input-md" required="">
+                <input id="razaosocial" name="razaosocial" type="text" class="form-control input-md" >
 
                 <label class="col-md-4 control-label" for="cnpj_numero">* CNPJ</label>
-                <input id="cnpj_numero" name="cnpj_numero" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('00.000.000/0000-00')">
+                <input id="cnpj_numero" name="cnpj_numero" type="text" class="form-control input-md"  onkeypress="$(this).mask('00.000.000/0000-00')">
 
                 <label class="col-md-4 control-label" for="ie">* Inscrição Estadual</label>
-                <input id="ie" name="ie" type="text" class="form-control input-md" required="">
-                
+                <input id="ie" name="ie" type="text" class="form-control input-md" >
+
               </div>
             
             </div>
@@ -86,7 +87,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="celular">* Telefone Celular</label>
               <div class="col-md-4">
-                <input id="celular" name="celular" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('(00) 0 0000-0000')">
+                <input id="celular" name="celular" type="text" class="form-control input-md"  onkeypress="$(this).mask('(00) 0 0000-0000')">
                 <br><span class="help">Ex: DDD + Telefone</span><br/>
               </div>
             </div>
@@ -94,7 +95,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="telfixo">Telefone Fixo</label>
               <div class="col-md-4">
-                <input id="telfixo" name="telfixo" type="text" class="form-control input-md" required="" onkeypress="$(this).mask('(00) 0000-0000')">
+                <input id="telfixo" name="telfixo" type="text" class="form-control input-md"  onkeypress="$(this).mask('(00) 0000-0000')">
                 <br><span class="help">Ex: DDD + Telefone</span><br/>
               </div>
             </div>
@@ -149,7 +150,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="cidade">* Cidade</label>
               <div class="col-md-4">
-                <input id="bairro" name="bairro" type="text" class="form-control input-md" required="">
+                <input id="cidade" name="bairro" type="text" class="form-control input-md" required="">
               </div>
             </div>
 
@@ -191,10 +192,7 @@
                 <input id="resenha" name="resenha" type="password" class="password form-control input-md" required="">
               </div>
             </div>
-
-          </form>
-
-            <input type="submit" class="fadeIn fourth" value="Cadastrar">
+            <input type="submit" value="Cadastrar">
         </form>
 
         <div id="formFooter">
