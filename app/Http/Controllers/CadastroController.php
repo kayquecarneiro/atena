@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class CadastroController extends Controller
 {
-    //
+
+    public function __invoke(){
+        return view('cadastro');
+    }
 }

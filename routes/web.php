@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'home');
+Route::get('/', 'HomeController');
 
-Route::view('/cadastro','cadastro');
+Route::get('/cadastro','CadastroController');
 
 Route::view('/painelcliente','painelcliente');
 
 Route::fallback(function(){
-    return view('notFound');
+    return Route::view('notFound');
 });
 
