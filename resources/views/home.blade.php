@@ -20,9 +20,10 @@
         <div class="fadeIn first">
         <img src="{{url('storage/img/blogo.svg')}}" id="icon" alt="User Icon" />
         </div>
-        <form>
-            <input type="email" id="login" class="fadeIn second" name="login" placeholder="Digite seu e-mail">
-            <input type="password" id="password" class="fadeIn third" name="login" placeholder="Informe sua senha">
+        <form method="POST">
+        @csrf
+            <input type="email" id="loginUser" class="fadeIn second" name="loginUser" placeholder="Digite seu e-mail">
+            <input type="password" id="passwordUser" class="fadeIn third" name="passwordUser" placeholder="Informe sua senha">
             <input type="submit" class="fadeIn fourth" value="Entrar">
         </form>
 

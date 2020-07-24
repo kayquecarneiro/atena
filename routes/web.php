@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController');
 
+Route::post('/','LoginController');
+
 Route::get('/cadastro','CadastroController');
 
 Route::post('/cadastro','SaveCadastroController');
