@@ -8,7 +8,7 @@ O esquema da tabela do banco está armazenado na raiz do projeto na pasta bdsql/
 
 - Nome Banco de Dados: atena_bd
 - usuário = root 
-- senha = “” (vaziia)
+- senha = “” (vazia)
 
 Caso seja necessária a modificação de algum dos atributos apresentados anteriormente, basta fazer as alterações no arquivo .env na raiz do projeto.
 
