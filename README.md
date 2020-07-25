@@ -4,13 +4,13 @@ O projeto Atena consiste em uma ferramenta de apoio a o usuário que deseja se c
 
 # Instruções para funcionamento
 
-<<<<<<< HEAD
+
 A ferramenta é construída com as tecnologias *Laravel, Bootstrap e jQuery*, assim fazendo necessário a instalação de um servidor Web. a utilização de um servidor local como [*XAMPP*](https://www.apachefriends.org/pt_br/index.html) ou o próprio uso do servidor embutido como o *Artisan* presente no *Framework*. Para armazenar as informações das contas foi utilizado o *SGBD MySQL*.O esquema e diagrama ERP da tabela do banco está armazenado na raiz do projeto na pasta. 
 =======
 - Nome Banco de Dados: atena_bd
 - usuário = root 
 - senha = “” (vazia)
->>>>>>> eb2ad9ac17d10133bd6479c4514c3ddedecdbaf4
+
 
 - *bdsql/127_0_0_1.sql*
 - *bddiagrama/atena_diagrama.mwb* 
